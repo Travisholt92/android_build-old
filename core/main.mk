@@ -156,8 +156,8 @@ endif
 
 #
 # -----------------------------------------------------------------
-# Add Corvus properties to the build properties.
-ADDITIONAL_BUILD_PROPERTIES += $(CORVUS_PROPERTIES)
+# Add Kang properties to the build properties.
+ADDITIONAL_BUILD_PROPERTIES += $(KANG_PROPERTIES)
 
 # Bring in standard build system definitions.
 include $(BUILD_SYSTEM)/definitions.mk

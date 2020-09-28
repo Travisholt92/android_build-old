@@ -53,6 +53,6 @@ if [ -n "$BUILD_THUMBPRINT" ] ; then
   echo "ro.build.thumbprint=$BUILD_THUMBPRINT"
 fi
 
-echo "ro.corvus.device=$CORVUS_DEVICE"
+echo "ro.kang.device=$KANG_DEVICE"
 
 echo "# end build properties"

@@ -37,7 +37,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 
 EOF
 
-    __print_corvus_functions_help
+    __print_kang_functions_help
 
 cat <<EOF
 
@@ -50,7 +50,7 @@ EOF
     local T=$(gettop)
     local A=""
     local i
-    for i in `cat $T/build/envsetup.sh $T/vendor/corvus/build/envsetup.sh | sed -n "/^[[:blank:]]*function /s/function \([a-z_]*\).*/\1/p" | sort | uniq`; do
+    for i in `cat $T/build/envsetup.sh $T/vendor/kang/build/envsetup.sh | sed -n "/^[[:blank:]]*function /s/function \([a-z_]*\).*/\1/p" | sort | uniq`; do
       A="$A $i"
     done
     echo $A
@@ -61,8 +61,8 @@ function build_build_var_cache()
 {
     local T=$(gettop)
     # Grep out the variable names from the script.
-    cached_vars=(`cat $T/build/envsetup.sh $T/vendor/corvus/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`)
-    cached_abs_vars=(`cat $T/build/envsetup.sh $T/vendor/corvus/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_abs_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`)
+    cached_vars=(`cat $T/build/envsetup.sh $T/vendor/kang/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`)
+    cached_abs_vars=(`cat $T/build/envsetup.sh $T/vendor/kang/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_abs_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`)
     # Call the build system to dump the "<val>=<value>" pairs as a shell script.
     build_dicts_script=`\builtin cd $T; build/soong/soong_ui.bash --dumpvars-mode \
                         --vars="${cached_vars[*]}" \
@@ -144,13 +144,13 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^corvus_") ; then
-        CORVUS_BUILD=$(echo -n $1 | sed -e 's/^corvus_//g')
-        export BUILD_NUMBER=$( (date +%s%N ; echo $CORVUS_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
+    if (echo -n $1 | grep -q -e "^kang_") ; then
+        KANG_BUILD=$(echo -n $1 | sed -e 's/^kang_//g')
+        export BUILD_NUMBER=$( (date +%s%N ; echo $KANG_BUILD; hostname) | openssl sha1 | sed -e 's/.*=//g; s/ //g' | cut -c1-10 )
     else
-        CORVUS_BUILD=
+        KANG_BUILD=
     fi
-    export CORVUS_BUILD
+    export KANG_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -673,14 +673,14 @@ function lunch()
         T=$(gettop)
         C=$(pwd)
         cd $T
-        $T/vendor/corvus/build/tools/roomservice.py $product
+        $T/vendor/kang/build/tools/roomservice.py $product
         cd $C
         check_product $product
     else
         T=$(gettop)
         C=$(pwd)
         cd $T
-        $T/vendor/corvus/build/tools/roomservice.py $product true
+        $T/vendor/kang/build/tools/roomservice.py $product true
         cd $C
     fi
     if [ $? -ne 0 ]
@@ -1670,4 +1670,4 @@ fi
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/corvus/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/kang/build/envsetup.sh

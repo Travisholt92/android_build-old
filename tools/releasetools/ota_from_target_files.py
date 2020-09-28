@@ -811,18 +811,19 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   android_version = target_info.GetBuildProp("ro.build.version.release")
   build_id = target_info.GetBuildProp("ro.build.id")
-  build_date = target_info.GetBuildProp("ro.corvus.build.date")
+  build_date = target_info.GetBuildProp("ro.kang.build.date")
   security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
-  device = target_info.GetBuildProp("ro.corvus.device")
+  device = target_info.GetBuildProp("ro.kang.device")
   script.Print("----------------------------------------------");
-  script.Print("    _____ ____  _______      ___    _  _____  ");
-  script.Print("   / ____/ __ \|  __ \ \    / / |  | |/ ____| ");
-  script.Print("  | |   | |  | | |__) \ \  / /| |  | | (___   ");
-  script.Print("  | |   | |  | |  _  / \ \/ / | |  | |\___ \  ");
-  script.Print("  | |___| |__| | | \ \  \  /  | |__| |____) | ");
-  script.Print("   \_____\____/|_|  \_\  \/    \____/|_____/  ");
+  script.Print("       _   _    ___    __    _   ___    ");
+  script.Print("      | | / |  /__ \  |  \  | | /___\   ");
+  script.Print("      | |/ /  / |_| | | | \ | || | ___  ");
+  script.Print("      | |\ \  | | | | | |  \  |\ \__| | ");
+  script.Print("      |_| \_\ |_| | | |_|   \_| \___ /  ");
+  script.Print("                                             ");
   script.Print("                                              ");
-  script.Print("    by Ritzz, DeadmanxXD,Jughead & Taran      ");
+  script.Print("  by Travisholt92, moditjain9777, Spookcity ");
+  script.Print("     tattoorepairman & inderpreetsinghb ");
   script.Print("----------------------------------------------");
   script.Print(" Android version: %s"%(android_version));
   script.Print(" Build id: %s"%(build_id));
