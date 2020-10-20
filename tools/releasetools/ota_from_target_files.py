@@ -823,7 +823,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("                                             ");
   script.Print("                                              ");
   script.Print("  by Travisholt92, moditjain9777, Spookcity ");
-  script.Print("     tattoorepairman & inderpreetsinghb ");
+  script.Print("            & tattoorepairman");
   script.Print("----------------------------------------------");
   script.Print(" Android version: %s"%(android_version));
   script.Print(" Build id: %s"%(build_id));
